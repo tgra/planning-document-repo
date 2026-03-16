@@ -1,0 +1,9 @@
+crawler:
+  delay_seconds: 1
+  user_agent: "Mozilla/5.0"
+
+start_urls:
+  - https://pa.swindon.gov.uk/publicaccess/propertyDetails.do?activeTab=relatedCases&keyVal=MVW0I9PT0F500
+
+output:
+  csv: planning_data.csv
