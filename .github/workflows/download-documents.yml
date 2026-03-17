@@ -22,7 +22,7 @@ jobs:
         run: pip install requests
 
       - name: Run downloader
-        run: python download_documents.py
+        run: python download-docs.py
 
       - name: Commit and push if changes
         run: |
