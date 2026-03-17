@@ -21,6 +21,17 @@ jobs:
         pip install playwright
         playwright install
 
-    - name: Run script
+    - name: Run download script
       run: |
         python playwright-download.py
+
+    - name: Commit downloaded files
+      run: |
+        git config --global user.name "github-actions"
+        git config --global user.email "github-actions@github.com"
+        # Stage all downloaded files
+        git add downloads/
+        # Only commit if there are changes
+        git diff-index --quiet HEAD || git commit -m "Add downloaded documents [skip ci]"
+        # Push changes to the current branch
+        git push
