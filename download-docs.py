@@ -19,15 +19,12 @@ def is_valid_url(url):
 
 def download_file(url, filepath):
     try:
-        response = requests.get(url, stream=True, timeout=30)
+        response = requests.get(url, stream=True, timeout=30, verify=False)  # <--- disable SSL check
         response.raise_for_status()
-
         with open(filepath, "wb") as f:
             for chunk in response.iter_content(chunk_size=8192):
                 f.write(chunk)
-
         print(f"[OK] {filepath}")
-
     except Exception as e:
         print(f"[FAIL] {url} -> {e}")
 
